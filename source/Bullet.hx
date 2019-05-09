@@ -6,9 +6,12 @@ import flixel.math.FlxVector;
 
 class Bullet extends FlxSprite {
 	var _direction:FlxVector;
+	var _bulletSpeed:Int;
 
 	public function new() {
 		_direction = new FlxVector();
+		_bulletSpeed = 300;
+		kill();
 		super();
 	}
 
@@ -23,7 +26,7 @@ class Bullet extends FlxSprite {
 	}
 
 	public function fire(x_:Float, y_:Float) {
-		_direction.set(FlxG.mouse.screenX - x_, FlxG.mouse.screenY - y_).normalize().scale(300);
+		_direction.set(FlxG.mouse.screenX - x_, FlxG.mouse.screenY - y_).normalize().scale(_bulletSpeed);
 		setPosition(x_, y_);
 		revive();
 	}

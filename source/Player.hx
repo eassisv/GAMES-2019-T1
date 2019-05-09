@@ -2,17 +2,16 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.group.FlxGroup;
 
 class Player extends FlxSprite {
 	var _moveSpeed:Int;
-	var _bullet:Bullet;
+	var _bullets:FlxTypedGroup<Bullet>;
 
-	public function new(bullet:Bullet) {
+	public function new(bullets:FlxTypedGroup<Bullet>) {
 		super(FlxG.width / 2, FlxG.height - 20);
-		_bullet = new Bullet();
-		_bullet.kill();
+		_bullets = bullets;
 		_moveSpeed = 500;
-		_bullet = bullet;
 	}
 
 	override public function update(elapsed:Float) {
@@ -40,6 +39,10 @@ class Player extends FlxSprite {
 	}
 
 	public function fire() {
-		_bullet.fire(x, y);
+		var bullet:Bullet;
+		bullet = _bullets.getFirstDead();
+		if (bullet != null) {
+			bullet.fire(x, y);
+		}
 	}
 }
