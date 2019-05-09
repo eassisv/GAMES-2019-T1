@@ -5,10 +5,14 @@ import flixel.FlxSprite;
 
 class Player extends FlxSprite {
 	var _moveSpeed:Int;
+	var _bullet:Bullet;
 
-	public function new() {
+	public function new(bullet:Bullet) {
 		super(FlxG.width / 2, FlxG.height - 20);
+		_bullet = new Bullet();
+		_bullet.kill();
 		_moveSpeed = 500;
+		_bullet = bullet;
 	}
 
 	override public function update(elapsed:Float) {
@@ -36,6 +40,6 @@ class Player extends FlxSprite {
 	}
 
 	public function fire() {
-		FlxG.log.add("fire");
+		_bullet.fire(x, y);
 	}
 }
