@@ -2,7 +2,7 @@
 
 #### Aluno
 **nome:** Éverton de Assis Vieira\
-**Matrícula:** 161111027
+**Matrícula:** 1611100027
 
 #### Link para o jogo
 [Annihilation](https://eassisv.github.io/annihilation/)
