@@ -2,34 +2,40 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.input.actions.FlxAction;
-import flixel.input.FlxInput;
-import flixel.input.keyboard.FlxKey;
 
 class Player extends FlxSprite {
 	var _moveSpeed:Int;
 
-	public function new(x:Int, y:Int) {
-		super(x, y);
+	public function new() {
+		super(FlxG.width / 2, FlxG.height - 20);
+		_moveSpeed = 500;
 	}
 
-	override public function update(elapsed:Float):Void {
+	override public function update(elapsed:Float) {
 		updateInput();
 		super.update(elapsed);
 	}
 
 	public function updateInput() {
+		velocity.set(0, 0);
 		if (FlxG.keys.anyPressed([UP, W])) {
-			acceleration.y = -_moveSpeed;
+			velocity.y = -_moveSpeed;
 		}
 		if (FlxG.keys.anyPressed([DOWN, S])) {
-			acceleration.y = _moveSpeed;
+			velocity.y = _moveSpeed;
 		}
 		if (FlxG.keys.anyPressed([LEFT, A])) {
-			acceleration.x = -_moveSpeed;
+			velocity.x = -_moveSpeed;
 		}
 		if (FlxG.keys.anyPressed([RIGHT, D])) {
-			acceleration.x = _moveSpeed;
+			velocity.x = _moveSpeed;
 		}
+		if (FlxG.mouse.justPressed) {
+			fire();
+		}
+	}
+
+	public function fire() {
+		FlxG.log.add("fire");
 	}
 }
