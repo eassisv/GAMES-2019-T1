@@ -11,8 +11,8 @@ class Player extends FlxSprite {
 	public function new(bullets:FlxTypedGroup<Bullet>) {
 		super(FlxG.width / 2, FlxG.height - 20);
 		_bullets = bullets;
+		FlxG.log.add(_bullets.length);
 		_moveSpeed = 500;
-		createBullets();
 	}
 
 	override public function update(elapsed:Float) {
@@ -44,12 +44,6 @@ class Player extends FlxSprite {
 		bullet = _bullets.getFirstDead();
 		if (bullet != null) {
 			bullet.fire(x, y);
-		}
-	}
-
-	private function createBullets() {
-		for (b in _bullets) {
-			b = new Bullet();
 		}
 	}
 }
