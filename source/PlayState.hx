@@ -9,10 +9,8 @@ class PlayState extends FlxState {
 	var _numBullets:Int;
 
 	override public function create():Void {
-		_bullets = new FlxTypedGroup<Bullet>();
+		_bullets = new FlxTypedGroup<Bullet>(_numBullets);
 		_player = new Player(_bullets);
-		_numBullets = 30;
-		createBullets();
 		add(_bullets);
 		add(_player);
 		super.create();
@@ -20,12 +18,5 @@ class PlayState extends FlxState {
 
 	override public function update(elapsed:Float):Void {
 		super.update(elapsed);
-	}
-
-	public function createBullets() {
-		while (_numBullets > 0) {
-			_numBullets--;
-			_bullets.add(new Bullet());
-		}
 	}
 }
