@@ -5,13 +5,13 @@ import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 
 class Player extends FlxSprite {
-	var _moveSpeed:Int;
+	var _moveSpeed:Int = 700;
 	var _bullets:FlxTypedGroup<Bullet>;
 
 	public function new(bullets:FlxTypedGroup<Bullet>) {
 		super(FlxG.width / 2, FlxG.height - 20);
+		makeGraphic(20, 20, 0xff0000ff);
 		_bullets = bullets;
-		FlxG.log.add(_bullets.length);
 		_moveSpeed = 500;
 	}
 

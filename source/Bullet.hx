@@ -10,7 +10,7 @@ class Bullet extends FlxSprite {
 
 	public function new() {
 		_direction = new FlxVector();
-		_bulletSpeed = 300;
+		_bulletSpeed = 800;
 		kill();
 		super();
 	}
