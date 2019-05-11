@@ -29,6 +29,8 @@ class PlayState extends FlxState {
 		add(_bullets);
 		add(_player);
 		add(_cameraWall);
+		add(_enemies);
+		add(_spawners);
 		super.create();
 	}
 
