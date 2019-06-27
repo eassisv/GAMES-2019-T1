@@ -7,11 +7,12 @@ import flixel.math.FlxPoint;
 class Enemy extends FlxSprite {
 	var _shootInterval:Int;
 	var _path:FlxPath;
-	var _points:Array<FlxPoint>;
 
 	public function new() {
-		_path = new FlxPath();
 		super();
+		_path = new FlxPath();
+		makeGraphic(20, 20, 0xffff0000);
+		exists = false;
 	}
 
 	override public function update(elapsed:Float) {
@@ -20,8 +21,7 @@ class Enemy extends FlxSprite {
 
 	public function spawn(x_:Float, y_:Float) {
 		reset(x_, y_);
-		_points = [new FlxPoint(200, 200), new FlxPoint(100, 100)];
-		path = _path;
-		path.start(_points, 10, FlxPath.FORWARD);
+		var points:Array<FlxPoint> = [new FlxPoint(100, 100), new FlxPoint(300, 300), new FlxPoint(100, 300)];
+		path = new FlxPath().start(points, 500, FlxPath.YOYO);
 	}
 }

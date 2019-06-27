@@ -15,10 +15,12 @@ class Spawner extends FlxSprite {
 
 	override public function update(elapsed:Float) {
 		if (_spawnInterval == 10) {
-			var enemy = _enemies.getFirstAlive();
+			var enemy = _enemies.getFirstAvailable();
 			if (enemy != null) {
+				FlxG.log.add("puto");
 				enemy.spawn(x, y);
 			}
+			_spawnInterval = 0;
 		}
 	}
 }
